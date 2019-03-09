@@ -29,7 +29,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                     <?
                         $APPLICATION->IncludeComponent(
                             "bitrix:menu", 
-                            "top", 
+                            "top_custom_template", 
                             array(
                                 "ALLOW_MULTI_SELECT" => "N",
                                 "CHILD_MENU_TYPE" => "left",

@@ -77,7 +77,7 @@ $APPLICATION->SetTitle("Новости");
 		"PAGER_TITLE" => "Новости",
 		"PREVIEW_TRUNCATE_LEN" => "",
 		"SEF_FOLDER" => "",
-		"SEF_MODE" => "Y",
+		"SEF_MODE" => "N",
 		"SET_LAST_MODIFIED" => "N",
 		"SET_STATUS_404" => "N",
 		"SET_TITLE" => "Y",
@@ -94,10 +94,9 @@ $APPLICATION->SetTitle("Новости");
 		"USE_RSS" => "N",
 		"USE_SEARCH" => "N",
 		"USE_SHARE" => "N",
-		"SEF_URL_TEMPLATES" => array(
-			"news" => "",
-			"section" => "#SECTION_CODE_PATH#",
-			"detail" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#",
+		"VARIABLE_ALIASES" => array(
+			"SECTION_ID" => "SECTION_ID",
+			"ELEMENT_ID" => "ELEMENT_ID",
 		)
 	),
 	false
@@ -124,26 +123,34 @@ $APPLICATION->SetTitle("Новости");
                         <h3>Разделы</h3>
 
                         <?$APPLICATION->IncludeComponent(
-                            "bitrix:catalog.section.list",
-                            "",
-                            Array(
-                                "ADD_SECTIONS_CHAIN" => "Y",
-                                "CACHE_GROUPS" => "Y",
-                                "CACHE_TIME" => "36000000",
-                                "CACHE_TYPE" => "A",
-                                "COUNT_ELEMENTS" => "Y",
-                                "IBLOCK_ID" => "1",
-                                "IBLOCK_TYPE" => "information",
-                                "SECTION_CODE" => "",
-                                "SECTION_FIELDS" => array("",""),
-                                "SECTION_ID" => $_REQUEST["SECTION_ID"],
-                                "SECTION_URL" => "/novosti/#SECTION_CODE_PATH#",
-                                "SECTION_USER_FIELDS" => array("",""),
-                                "SHOW_PARENT_NAME" => "Y",
-                                "TOP_DEPTH" => "2",
-                                "VIEW_MODE" => "LIST"
-                            )
-                        );?>
+	"bitrix:catalog.section.list", 
+	".default", 
+	array(
+		"ADD_SECTIONS_CHAIN" => "Y",
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"COUNT_ELEMENTS" => "Y",
+		"IBLOCK_ID" => "1",
+		"IBLOCK_TYPE" => "information",
+		"SECTION_CODE" => "",
+		"SECTION_FIELDS" => array(
+			0 => "",
+			1 => "",
+		),
+		"SECTION_ID" => $_REQUEST["SECTION_ID"],
+		"SECTION_URL" => "",
+		"SECTION_USER_FIELDS" => array(
+			0 => "",
+			1 => "",
+		),
+		"SHOW_PARENT_NAME" => "Y",
+		"TOP_DEPTH" => "2",
+		"VIEW_MODE" => "LIST",
+		"COMPONENT_TEMPLATE" => ".default"
+	),
+	false
+);?>
 
                         <ul class="links">
                             <li><a href="#">Amet turpis, feugiat et sit amet</a></li>

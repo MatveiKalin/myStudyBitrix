@@ -16,7 +16,7 @@ $this->setFrameMode(true);
 <?='<pre style="text-align: left;">'?>
     <? 
 //        print_r($arParams);
-        print_r($arResult);
+//        print_r($arResult);
     ?>
 <?='</pre>'?>
 
