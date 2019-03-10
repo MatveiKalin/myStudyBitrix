@@ -59,8 +59,6 @@ $this->setFrameMode(true);
                 <?endif?>
             </header>
 
-            
-
             <?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arItem["PREVIEW_PICTURE"])):?>
                 <?if(
                     !$arParams["HIDE_LINK_WHEN_NO_DETAIL"] ||
@@ -97,8 +95,56 @@ $this->setFrameMode(true);
                     <?echo $arItem["PREVIEW_TEXT"];?>
                 </p>
             <?endif;?>
+            
+            <?foreach($arItem["DISPLAY_PROPERTIES"] as $pid => $arProperty):?>
+                <?=$arProperty["NAME"]?>:&nbsp;
+                <?if(is_array($arProperty["DISPLAY_VALUE"])):?>
+
+                    <? if($pid == "VIDEO"): ?>
+                        <iframe 
+                            width="773" 
+                            height="315" 
+                            src="https://www.youtube.com/embed/<?= $arProperty["DISPLAY_VALUE"] ?>?start=1" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    <? elseif($pid == "PRICELIST"): ?>
+                        <? foreach ($arProperty["FILE_VALUE"] as $priceList): ?>
+                            <a href="<?=$priceList["SRC"]?>">
+                                <?=$priceList["ORIGINAL_NAME"]?>
+                            </a>
+                
+                            &nbsp;
+                        <? endforeach; ?>
+                    <? else: ?>
+                        <?=implode("&nbsp;/&nbsp;", $arProperty["DISPLAY_VALUE"]);?>
+                    <? endif; ?>
+                <?else:?>
+                    <? if($pid == "VIDEO"): ?>
+                        <iframe 
+                            width="773" 
+                            height="315" 
+                            src="https://www.youtube.com/embed/<?= $arProperty["DISPLAY_VALUE"] ?>?start=1" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    <? else: ?>
+                        <? if($pid == "PRICELIST"): ?> 
+                            <a href="<?=$arProperty["FILE_VALUE"]["SRC"]?>">
+                                <?=$arProperty["FILE_VALUE"]["ORIGINAL_NAME"]?>
+                            </a>
+                        <? else: ?>
+                            <?=$arProperty["DISPLAY_VALUE"];?> 
+                            <? if($pid == "PRICE"): ?> &#8381; <? endif;?>
+                        <? endif; ?>
+                    <? endif; ?>
+                <?endif?>
+                <br />
+            <?endforeach;?> 
+                
         </article>
-        
     <?endforeach;?>
     
     <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>

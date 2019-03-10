@@ -54,9 +54,9 @@ $this->setFrameMode(true);
     
     
     <?foreach($arResult["DISPLAY_PROPERTIES"] as $pid => $arProperty):?>
-		<?=$arProperty["NAME"]?>:&nbsp;
-		<?if(is_array($arProperty["DISPLAY_VALUE"])):?>
-        
+        <?=$arProperty["NAME"]?>:&nbsp;
+        <?if(is_array($arProperty["DISPLAY_VALUE"])):?>
+
             <? if($pid == "VIDEO"): ?>
                 <iframe 
                     width="773" 
@@ -66,10 +66,18 @@ $this->setFrameMode(true);
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen
                 ></iframe>
+            <? elseif($pid == "PRICELIST"): ?>
+                <? foreach ($arProperty["FILE_VALUE"] as $priceList): ?>
+                    <a href="<?=$priceList["SRC"]?>">
+                        <?=$priceList["ORIGINAL_NAME"]?>
+                    </a>
+
+                    &nbsp;
+                <? endforeach; ?>
             <? else: ?>
                 <?=implode("&nbsp;/&nbsp;", $arProperty["DISPLAY_VALUE"]);?>
             <? endif; ?>
-		<?else:?>
+        <?else:?>
             <? if($pid == "VIDEO"): ?>
                 <iframe 
                     width="773" 
@@ -80,12 +88,19 @@ $this->setFrameMode(true);
                     allowfullscreen
                 ></iframe>
             <? else: ?>
-                <?=$arProperty["DISPLAY_VALUE"];?>
+                <? if($pid == "PRICELIST"): ?> 
+                    <a href="<?=$arProperty["FILE_VALUE"]["SRC"]?>">
+                        <?=$arProperty["FILE_VALUE"]["ORIGINAL_NAME"]?>
+                    </a>
+                <? else: ?>
+                    <?=$arProperty["DISPLAY_VALUE"];?> 
+                    <? if($pid == "PRICE"): ?> &#8381; <? endif;?>
+                <? endif; ?>
             <? endif; ?>
-		<?endif?>
-		<br />
-	<?endforeach;?>
-
+        <?endif?>
+        <br />
+    <?endforeach;?>
+    <br />    
         
     <?if($arResult["NAV_RESULT"]):?>
 		<?if($arParams["DISPLAY_TOP_PAGER"]):?>

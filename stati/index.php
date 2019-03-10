@@ -63,7 +63,6 @@ $APPLICATION->SetTitle("Статьи");
                             "LIST_PROPERTY_CODE" => array(
                                 0 => "VIDEO",
                                 1 => "",
-                                2 => "",
                             ),
                             "MESSAGE_404" => "",
                             "META_DESCRIPTION" => "-",
