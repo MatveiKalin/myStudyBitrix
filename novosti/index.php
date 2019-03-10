@@ -55,7 +55,7 @@ $APPLICATION->SetTitle("Новости");
 		"IBLOCK_ID" => "1",
 		"IBLOCK_TYPE" => "information",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
-		"LIST_ACTIVE_DATE_FORMAT" => "j M Y",
+		"LIST_ACTIVE_DATE_FORMAT" => "j F Y",
 		"LIST_FIELD_CODE" => array(
 			0 => "",
 			1 => "",

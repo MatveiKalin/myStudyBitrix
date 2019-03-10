@@ -5,11 +5,11 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 <!DOCTYPE HTML>
 <html>
 	<head>
-        <?$APPLICATION->ShowHead();?>
-		
         <title>
             <?$APPLICATION->ShowTitle();?>
         </title>
+        
+        <?$APPLICATION->ShowHead();?>
 	</head>
 	<body class="is-preload">
         
