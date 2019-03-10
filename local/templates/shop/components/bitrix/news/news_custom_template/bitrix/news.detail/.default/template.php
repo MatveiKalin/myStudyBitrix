@@ -36,7 +36,11 @@ $this->setFrameMode(true);
     </header>
     
     
-    <?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arResult["DETAIL_PICTURE"])):?>
+    <?if(
+        $arParams["DISPLAY_PICTURE"]!="N" && 
+        is_array($arResult["DETAIL_PICTURE"]) &&
+        empty($arResult["DISPLAY_PROPERTIES"]["VIDEO"]["DISPLAY_VALUE"])
+    ):?>
         <span class="image featured">
             <img
                 src="<?=$arResult["DETAIL_PICTURE"]["SRC"]?>"
@@ -49,6 +53,40 @@ $this->setFrameMode(true);
     <?endif?>
     
     
+    <?foreach($arResult["DISPLAY_PROPERTIES"] as $pid => $arProperty):?>
+		<?=$arProperty["NAME"]?>:&nbsp;
+		<?if(is_array($arProperty["DISPLAY_VALUE"])):?>
+        
+            <? if($pid == "VIDEO"): ?>
+                <iframe 
+                    width="773" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/<?= $arProperty["DISPLAY_VALUE"] ?>?start=1" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                ></iframe>
+            <? else: ?>
+                <?=implode("&nbsp;/&nbsp;", $arProperty["DISPLAY_VALUE"]);?>
+            <? endif; ?>
+		<?else:?>
+            <? if($pid == "VIDEO"): ?>
+                <iframe 
+                    width="773" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/<?= $arProperty["DISPLAY_VALUE"] ?>?start=1" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                ></iframe>
+            <? else: ?>
+                <?=$arProperty["DISPLAY_VALUE"];?>
+            <? endif; ?>
+		<?endif?>
+		<br />
+	<?endforeach;?>
+
+        
     <?if($arResult["NAV_RESULT"]):?>
 		<?if($arParams["DISPLAY_TOP_PAGER"]):?>
             <?=$arResult["NAV_STRING"]?>
