@@ -40,7 +40,7 @@ use Bitrix\Main\Page\Asset;
                     <?
                         $APPLICATION->IncludeComponent(
                             "bitrix:menu", 
-                            "top_custom_template", 
+                            "top_menu_custom_template", 
                             array(
                                 "ALLOW_MULTI_SELECT" => "N",
                                 "CHILD_MENU_TYPE" => "left",

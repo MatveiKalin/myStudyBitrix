@@ -6,30 +6,56 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
             <div id="footer">
                 <div class="container">
                     <div class="row">
-                        <section class="col-3 col-6-narrower col-12-mobilep">
-                            <h3>Links to Stuff</h3>
-                            <ul class="links">
-                                <li><a href="#">Mattis et quis rutrum</a></li>
-                                <li><a href="#">Suspendisse amet varius</a></li>
-                                <li><a href="#">Sed et dapibus quis</a></li>
-                                <li><a href="#">Rutrum accumsan dolor</a></li>
-                                <li><a href="#">Mattis rutrum accumsan</a></li>
-                                <li><a href="#">Suspendisse varius nibh</a></li>
-                                <li><a href="#">Sed et dapibus mattis</a></li>
-                            </ul>
-                        </section>
-                        <section class="col-3 col-6-narrower col-12-mobilep">
-                            <h3>More Links to Stuff</h3>
-                            <ul class="links">
-                                <li><a href="#">Duis neque nisi dapibus</a></li>
-                                <li><a href="#">Sed et dapibus quis</a></li>
-                                <li><a href="#">Rutrum accumsan sed</a></li>
-                                <li><a href="#">Mattis et sed accumsan</a></li>
-                                <li><a href="#">Duis neque nisi sed</a></li>
-                                <li><a href="#">Sed et dapibus quis</a></li>
-                                <li><a href="#">Rutrum amet varius</a></li>
-                            </ul>
-                        </section>
+                        <?
+                            $APPLICATION->IncludeComponent(
+                                "bitrix:menu", 
+                                "bottom_menu_custom_template", 
+                                Array(
+                                    "ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
+                                    "CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
+                                    "DELAY" => "N",	// Откладывать выполнение шаблона меню
+                                    "MAX_LEVEL" => "1",	// Уровень вложенности меню
+                                    "MENU_CACHE_GET_VARS" => array(	// Значимые переменные запроса
+                                        0 => "",
+                                    ),
+                                    "MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
+                                    "MENU_CACHE_TYPE" => "N",	// Тип кеширования
+                                    "MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
+                                    "ROOT_MENU_TYPE" => "top",	// Тип меню для первого уровня
+                                    "USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
+                                ),
+                                false
+                            );
+                        ?>
+                        
+                        <?
+                            $APPLICATION->IncludeComponent(
+                                "bitrix:news.line", 
+                                "bottom_arcticles_custom_template", 
+                                Array(
+                                    "ACTIVE_DATE_FORMAT" => "d.m.Y",	// Формат показа даты
+                                    "CACHE_GROUPS" => "Y",	// Учитывать права доступа
+                                    "CACHE_TIME" => "300",	// Время кеширования (сек.)
+                                    "CACHE_TYPE" => "A",	// Тип кеширования
+                                    "DETAIL_URL" => "",	// URL, ведущий на страницу с содержимым элемента раздела
+                                    "FIELD_CODE" => array(	// Поля
+                                        0 => "",
+                                        1 => "",
+                                    ),
+                                    "IBLOCKS" => array(	// Код информационного блока
+                                        0 => "2",
+                                    ),
+                                    "IBLOCK_TYPE" => "articles",	// Тип информационного блока
+                                    "NEWS_COUNT" => "7",	// Количество новостей на странице
+                                    "SORT_BY1" => "ACTIVE_FROM",	// Поле для первой сортировки новостей
+                                    "SORT_BY2" => "SORT",	// Поле для второй сортировки новостей
+                                    "SORT_ORDER1" => "DESC",	// Направление для первой сортировки новостей
+                                    "SORT_ORDER2" => "ASC",	// Направление для второй сортировки новостей
+                                ),
+                                false
+                            );
+                        ?>
+                        
                         <section class="col-6 col-12-narrower">
                             <h3>Get In Touch</h3>
                             <form>
