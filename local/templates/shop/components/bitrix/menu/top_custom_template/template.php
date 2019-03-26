@@ -9,9 +9,17 @@
                     continue;
             ?>
                 <?if($arItem["SELECTED"]):?>
-                    <li class="current"><a><?=$arItem["TEXT"]?></a></li>
+                    <li class="current">
+                        <a href="<?=$arItem["LINK"]?>">
+                            <?=$arItem["TEXT"]?>
+                        </a>
+                    </li>
                 <?else:?>
-                    <li><a href="<?=$arItem["LINK"]?>"><?=$arItem["TEXT"]?></a></li>
+                    <li>
+                        <a href="<?=$arItem["LINK"]?>">
+                            <?=$arItem["TEXT"]?>
+                        </a>
+                    </li>
                 <?endif?>
 
             <?endforeach?>

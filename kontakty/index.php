@@ -25,7 +25,20 @@
 <!-- Banner -->
 <section id="banner">
     <header>
-        <h2>Адрес: <em>г.Санкт-Петербург, набережная канала Грибоедова, 16</em></h2>
+        <h2>
+            <?$APPLICATION->IncludeComponent(
+                "bitrix:main.include", 
+                ".default", 
+                array(
+                    "AREA_FILE_SHOW" => "file",
+                    "AREA_FILE_SUFFIX" => "inc",
+                    "EDIT_TEMPLATE" => "",
+                    "PATH" => "/local/templates/shop/include_areas/address_inc.php",
+                    "COMPONENT_TEMPLATE" => ".default"
+                ),
+                false
+            );?>
+        </h2>
         <a href="#footer" class="button">Написать сообщение</a>
     </header>
 </section>

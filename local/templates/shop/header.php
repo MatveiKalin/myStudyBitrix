@@ -1,15 +1,26 @@
 <?
 if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	die();
+
+use Bitrix\Main\Page\Asset;
 ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
         <title>
-            <?$APPLICATION->ShowTitle();?>
+            <? $APPLICATION->ShowTitle(); ?>
         </title>
         
-        <?$APPLICATION->ShowHead();?>
+        <? $APPLICATION->ShowHead(); ?>
+        
+        <!-- Additional Scripts -->
+        <? Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.min.js"); ?>
+        <? Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.dropotron.min.js"); ?>
+        <? Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/browser.min.js"); ?>
+        <? Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/breakpoints.min.js"); ?>
+        <? Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/util.js"); ?>
+        <? Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/main.js"); ?>
+        <? Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jssor.slider/jssor.slider.min.js"); ?>
 	</head>
 	<body class="is-preload">
         
