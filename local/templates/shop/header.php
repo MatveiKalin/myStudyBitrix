@@ -21,6 +21,7 @@ use Bitrix\Main\Page\Asset;
         <? Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/util.js"); ?>
         <? Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/main.js"); ?>
         <? Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jssor.slider/jssor.slider.min.js"); ?>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	</head>
 	<body class="is-preload">
         

@@ -1,25 +1,18 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Страница для испытаний");
-?><?$APPLICATION->IncludeComponent("bitrix:news.line", "bottom_arcticles_custom_template", Array(
-	"ACTIVE_DATE_FORMAT" => "d.m.Y",	// Формат показа даты
-		"CACHE_GROUPS" => "Y",	// Учитывать права доступа
-		"CACHE_TIME" => "300",	// Время кеширования (сек.)
-		"CACHE_TYPE" => "A",	// Тип кеширования
-		"DETAIL_URL" => "",	// URL, ведущий на страницу с содержимым элемента раздела
-		"FIELD_CODE" => array(	// Поля
-			0 => "",
-			1 => "",
+?><?$APPLICATION->IncludeComponent("bitrix:main.feedback", "feedback_custom_template", Array(
+	"EMAIL_TO" => "matthewk@mail.ru",	// E-mail, на который будет отправлено письмо
+		"EVENT_MESSAGE_ID" => array(	// Почтовые шаблоны для отправки письма
+			0 => "7",
 		),
-		"IBLOCKS" => array(	// Код информационного блока
-			0 => "2",
+		"OK_TEXT" => "Спасибо, ваше сообщение принято.",	// Сообщение, выводимое пользователю после отправки
+		"REQUIRED_FIELDS" => array(	// Обязательные поля для заполнения
+			0 => "NAME",
+			1 => "EMAIL",
+			2 => "MESSAGE",
 		),
-		"IBLOCK_TYPE" => "articles",	// Тип информационного блока
-		"NEWS_COUNT" => "7",	// Количество новостей на странице
-		"SORT_BY1" => "ACTIVE_FROM",	// Поле для первой сортировки новостей
-		"SORT_BY2" => "SORT",	// Поле для второй сортировки новостей
-		"SORT_ORDER1" => "DESC",	// Направление для первой сортировки новостей
-		"SORT_ORDER2" => "ASC",	// Направление для второй сортировки новостей
+		"USE_CAPTCHA" => "Y",	// Использовать защиту от автоматических сообщений (CAPTCHA) для неавторизованных пользователей
 	),
 	false
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

@@ -56,7 +56,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                             );
                         ?>
                         
-                        <section class="col-6 col-12-narrower">
+<!--                        <section class="col-6 col-12-narrower">
                             <h3>Get In Touch</h3>
                             <form>
                                 <div class="row gtr-50">
@@ -76,7 +76,28 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                                     </div>
                                 </div>
                             </form>
-                        </section>
+                        </section>-->
+                        
+                        <?
+                            $APPLICATION->IncludeComponent(
+                                "bitrix:main.feedback", 
+                                "feedback_custom_template", 
+                                Array(
+                                    "EMAIL_TO" => "matthewk@mail.ru",	// E-mail, на который будет отправлено письмо
+                                    "EVENT_MESSAGE_ID" => array(	// Почтовые шаблоны для отправки письма
+                                        0 => "7",
+                                    ),
+                                    "OK_TEXT" => "Спасибо, ваше сообщение принято.",	// Сообщение, выводимое пользователю после отправки
+                                    "REQUIRED_FIELDS" => array(	// Обязательные поля для заполнения
+                                        0 => "NAME",
+                                        1 => "EMAIL",
+                                        2 => "MESSAGE",
+                                    ),
+                                    "USE_CAPTCHA" => "Y",	// Использовать защиту от автоматических сообщений (CAPTCHA) для неавторизованных пользователей
+                                ),
+                                false
+                            );
+                        ?>
                     </div>
                 </div>
 
