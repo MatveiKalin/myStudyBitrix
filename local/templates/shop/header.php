@@ -35,7 +35,7 @@ use Bitrix\Main\Page\Asset;
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="index.html" id="logo">Arcana <em>by HTML5 UP</em></a></h1>
+						<h1><a href="index.html" id="logo">Сайт о <em>компуктерах</em></a></h1>
 
 					<!-- Nav -->
                     <?
